@@ -1,5 +1,6 @@
-package com.example.luv2code;
+package com.example.luv2code.app;
 
+import com.example.luv2code.coach.Coach;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AnnotationDemoApp {

@@ -1,6 +1,9 @@
-package com.example.luv2code;
+package com.example.luv2code.coach;
 
+import com.example.luv2code.fortuneService.FortuneService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 
 public class SwimCoach implements Coach {
 

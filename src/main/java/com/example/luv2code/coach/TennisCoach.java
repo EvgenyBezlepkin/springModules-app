@@ -1,8 +1,9 @@
-package com.example.luv2code;
+package com.example.luv2code.coach;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import com.example.luv2code.fortuneService.FortuneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class TennisCoach implements Coach {
 
 	@Autowired
-	@Qualifier("randomFortuneService")
+	@Qualifier("happyFortuneService")
 	private FortuneService fortuneService;
 	
 	// define a default constructor
