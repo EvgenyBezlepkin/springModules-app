@@ -9,7 +9,19 @@
 
 	<!-- add entry to enable component scanning -->
 
-	<context:component-scan base-package="com.example.luv2code" />
+	<!--<context:component-scan base-package="com.example.luv2code" />-->
+
+	<bean id="terminator" class="com.example.luv2code.terminator.TerminatorQuoter" >
+			<property name="message" value="I'll be back" />
+	</bean>
+
+	<!--<bean class="com.example.luv2code.terminator.PostProxyInvokerContextListener"/>-->
+
+	<bean class="com.example.luv2code.terminator.ProfilingHandlerPostProcessor" />
+
+	<bean class="com.example.luv2code.terminator.InjectRundomBeanPostProcessor" />
+
+	<bean class="com.example.luv2code.terminator.TransactionBPP" />
 
 </beans>
 

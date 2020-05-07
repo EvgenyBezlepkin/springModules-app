@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+
+// синглтоны создаются по умолчанию, когда поднимается контекст
+// прототайпы создаются тога, когда они нужны
+
 @Component
 @Scope("prototype")
 public class TennisCoach implements Coach {
