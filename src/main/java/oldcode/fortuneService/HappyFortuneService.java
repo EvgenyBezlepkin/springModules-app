@@ -1,4 +1,4 @@
-package com.example.luv2code.fortuneService;
+package oldcode.fortuneService;
 
 import org.springframework.stereotype.Component;
 

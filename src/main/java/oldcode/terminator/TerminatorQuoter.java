@@ -1,6 +1,4 @@
-package com.example.luv2code.terminator;
-
-import org.springframework.web.context.WebApplicationContext;
+package oldcode.terminator;
 
 import javax.annotation.PostConstruct;
 

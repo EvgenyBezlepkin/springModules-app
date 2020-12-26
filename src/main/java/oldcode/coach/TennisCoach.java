@@ -1,9 +1,9 @@
-package com.example.luv2code.coach;
+package oldcode.coach;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import com.example.luv2code.fortuneService.FortuneService;
+import oldcode.fortuneService.FortuneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;

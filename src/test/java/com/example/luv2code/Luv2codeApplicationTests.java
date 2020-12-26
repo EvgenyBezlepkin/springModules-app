@@ -1,8 +1,7 @@
 package com.example.luv2code;
 
-import com.example.luv2code.app.AnnotationBeanScopeDemoApp;
-import com.example.luv2code.terminator.Quoter;
-import com.example.luv2code.terminator.TerminatorQuoter;
+import oldcode.app.AnnotationBeanScopeDemoApp;
+import oldcode.terminator.Quoter;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -1,4 +1,4 @@
-package com.example.luv2code.coach;
+package oldcode.coach;
 
 public interface Coach {
 

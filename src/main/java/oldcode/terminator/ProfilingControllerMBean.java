@@ -1,4 +1,4 @@
-package com.example.luv2code.terminator;
+package oldcode.terminator;
 
 public interface ProfilingControllerMBean {
 

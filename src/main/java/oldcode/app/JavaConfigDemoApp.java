@@ -1,7 +1,7 @@
-package com.example.luv2code.app;
+package oldcode.app;
 
-import com.example.luv2code.coach.Coach;
-import com.example.luv2code.config.SportConfig;
+import oldcode.coach.Coach;
+import oldcode.config.SportConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 

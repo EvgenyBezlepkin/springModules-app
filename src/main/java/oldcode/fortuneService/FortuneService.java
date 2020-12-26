@@ -1,4 +1,4 @@
-package com.example.luv2code.fortuneService;
+package oldcode.fortuneService;
 
 public interface FortuneService {
 

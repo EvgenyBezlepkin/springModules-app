@@ -1,6 +1,6 @@
-package com.example.luv2code.coach;
+package oldcode.coach;
 
-import com.example.luv2code.fortuneService.FortuneService;
+import oldcode.fortuneService.FortuneService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,9 @@
-package com.example.luv2code.config;
+package oldcode.config;
 
-import com.example.luv2code.coach.Coach;
-import com.example.luv2code.coach.SwimCoach;
-import com.example.luv2code.fortuneService.FortuneService;
-import com.example.luv2code.fortuneService.HappyFortuneService;
+import oldcode.coach.Coach;
+import oldcode.coach.SwimCoach;
+import oldcode.fortuneService.FortuneService;
+import oldcode.fortuneService.HappyFortuneService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
