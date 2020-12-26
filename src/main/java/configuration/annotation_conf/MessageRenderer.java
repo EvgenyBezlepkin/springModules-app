@@ -1,4 +1,4 @@
-package cosmina.configuration.boot_conf;
+package configuration.annotation_conf;
 
 public interface MessageRenderer {
 

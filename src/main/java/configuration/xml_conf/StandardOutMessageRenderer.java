@@ -1,6 +1,6 @@
-package cosmina.configuration.java_conf;
+package configuration.xml_conf;
 
-public class StandardOutMessageRenderer implements MessageRenderer {
+public class StandardOutMessageRenderer implements MessageRenderer{
 
     private MessageProvider mp;
 

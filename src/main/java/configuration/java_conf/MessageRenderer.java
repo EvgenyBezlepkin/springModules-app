@@ -1,4 +1,4 @@
-package cosmina.configuration.java_conf;
+package configuration.java_conf;
 
 public interface MessageRenderer {
 

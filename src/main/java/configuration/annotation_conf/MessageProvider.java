@@ -1,4 +1,4 @@
-package cosmina.configuration.annotation_conf;
+package configuration.annotation_conf;
 
 public interface MessageProvider {
 

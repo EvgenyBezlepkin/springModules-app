@@ -1,4 +1,4 @@
-package cosmina.configuration.xml_conf;
+package configuration.boot_conf;
 
 public interface MessageProvider {
 

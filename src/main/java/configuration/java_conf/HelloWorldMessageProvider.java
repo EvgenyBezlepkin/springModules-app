@@ -1,8 +1,5 @@
-package cosmina.configuration.annotation_conf;
+package configuration.java_conf;
 
-import org.springframework.stereotype.Component;
-
-@Component("provider")
 public class HelloWorldMessageProvider implements MessageProvider {
     @Override
     public String getMessage() {

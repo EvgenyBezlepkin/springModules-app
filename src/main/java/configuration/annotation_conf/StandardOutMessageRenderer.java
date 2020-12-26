@@ -1,7 +1,12 @@
-package cosmina.configuration.xml_conf;
+package configuration.annotation_conf;
 
-public class StandardOutMessageRenderer implements MessageRenderer{
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("renderer")
+public class StandardOutMessageRenderer implements MessageRenderer {
+
+    @Autowired
     private MessageProvider mp;
 
     @Override

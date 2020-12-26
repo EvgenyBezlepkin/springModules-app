@@ -1,6 +1,5 @@
-package cosmina.configuration.boot_conf;
+package configuration.boot_conf;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @Component

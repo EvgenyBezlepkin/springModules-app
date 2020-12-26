@@ -9,7 +9,7 @@
 
 
 <!--		вариант конфигурации через конструктор-->
-	<bean id="provider" class="cosmina.configuration.xml_conf.HelloWorldMessageProvider">
+	<bean id="provider" class="configuration.xml_conf.HelloWorldMessageProvider">
 			<constructor-arg value="Hello World"/>
 	</bean>
 
@@ -21,7 +21,7 @@
 
 
 <!--		вариант конфигурации через property (нужен сеттер)-->
-	<bean id="renderer" class="cosmina.configuration.xml_conf.StandardOutMessageRenderer">
+	<bean id="renderer" class="configuration.xml_conf.StandardOutMessageRenderer">
 		<property name="messageProvider" ref="provider"/>
 	</bean>
 

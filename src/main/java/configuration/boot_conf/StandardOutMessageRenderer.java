@@ -1,9 +1,9 @@
-package cosmina.configuration.annotation_conf;
+package configuration.boot_conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("renderer")
+@Component
 public class StandardOutMessageRenderer implements MessageRenderer {
 
     @Autowired
