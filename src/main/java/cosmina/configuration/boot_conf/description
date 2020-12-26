@@ -1,0 +1,10 @@
+
+1 Пример конфигурирования спринг бут (автоматический поиск аннотированных классов и автоматическая инициализация)
+2 классы помечаются @Configuration, @Service, @Repository, @Bean
+3 класс, содержащий метод main в методе main() выглядит следующим образом
+    @SpringBootApplication
+    public class App {
+        public static void main(String[] args) {
+            ConfigurableApplicationContext cac = SpringApplication.run(App.class, args);
+4 через контекст находим нужные бины (ctx.getBean("renderer", MessageRenderer.class)), которые уже сконфигурированы
+5 вызываем их методы
