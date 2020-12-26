@@ -8,11 +8,22 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<bean id="provider" class="cosmina.configuration.xml_conf.HelloWorldMessageProvider"/>
-	<bean id="renderer" class="cosmina.configuration.xml_conf.StandardOutMessageRenderer"
-		p:messageProvider-ref="provider"
-	/>
+<!--		вариант конфигурации через конструктор-->
+	<bean id="provider" class="cosmina.configuration.xml_conf.HelloWorldMessageProvider">
+			<constructor-arg value="Hello World"/>
+	</bean>
 
+
+<!--		вариант конфигурации через пространство имен p (нужен сеттер)-->
+<!--	<bean id="renderer" class="cosmina.configuration.xml_conf.StandardOutMessageRenderer"-->
+<!--		p:messageProvider-ref="provider"-->
+<!--	/>-->
+
+
+<!--		вариант конфигурации через property (нужен сеттер)-->
+	<bean id="renderer" class="cosmina.configuration.xml_conf.StandardOutMessageRenderer">
+		<property name="messageProvider" ref="provider"/>
+	</bean>
 
 
 </beans>

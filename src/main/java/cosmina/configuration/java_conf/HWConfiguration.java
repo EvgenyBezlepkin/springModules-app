@@ -1,8 +1,10 @@
 package cosmina.configuration.java_conf;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+@ComponentScan(basePackages = "cosmina.configuration.java_conf")
 @Configuration
 public class HWConfiguration {
 
