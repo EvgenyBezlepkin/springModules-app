@@ -1,7 +1,6 @@
 package cosmina.configuration.annotation_conf;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class App {
 

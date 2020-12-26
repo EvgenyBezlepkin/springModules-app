@@ -15,7 +15,7 @@
 
 
 <!--		вариант конфигурации через пространство имен p (нужен сеттер)-->
-<!--	<bean id="renderer" class="cosmina.configuration.xml_conf.StandardOutMessageRenderer"-->
+<!--	<bean id="renderer" class="StandardOutMessageRenderer"-->
 <!--		p:messageProvider-ref="provider"-->
 <!--	/>-->
 
