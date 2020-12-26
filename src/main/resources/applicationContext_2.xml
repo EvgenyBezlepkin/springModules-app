@@ -2,16 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:util="http://www.springframework.org/schema/util"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-<bean id="simpleValueXml" class="injection.SimpleValueXml"
-	  p:s="Hello"
-	  p:i="10"
-/>
+<!--	конфигурационный бин со значениями-->
+<bean id="injectConfig" class="injection.InjectConfig"/>
+
+<bean id="injectedClass" class="injection.InjectedClass"/>
+
+<!--	внедрение примитивов-->
+<!--	внедрение другого бина-->
+<!--	внедрение коллекций-->
+<bean id="injectXml" class="injection.InjectXml"
+	  p:s="#{injectConfig.s}"
+	  p:i="#{injectConfig.i}"
+	  p:ic-ref="injectedClass"
+>
+	<property name="map">
+		<map>
+			<entry key="firstKey" value="firstValue"/>
+		</map>
+	</property>
+</bean>
 
 
 </beans>
