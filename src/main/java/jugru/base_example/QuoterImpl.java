@@ -1,4 +1,4 @@
-package jugru;
+package jugru.base_example;
 
 import jugru.custom_annotation.RundomInt;
 

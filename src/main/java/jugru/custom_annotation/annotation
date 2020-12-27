@@ -1,2 +1,13 @@
 
 1 после создания пользовательской аннотации необходимо создать класс который будет искать классы с этой аннотацией и настраивать их
+2 этот класс реализует интерфейс BeanPostProcessor
+
+содержит два метода
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException
+между которыми будут вызываться инит-методы
+init-method, afterPropertiesSet, @PostConstruct
+
+3 в методе public Object postProcessBeforeInitialization(Object bean, String beanName)
+мы из переданного бина через рефлексию получаем поля, смотрим есть ли над ними аннотация
+если есть, получаем значения, производим действия, записываем в поле и возвращаем бин

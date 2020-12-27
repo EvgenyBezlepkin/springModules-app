@@ -1,4 +1,4 @@
-package jugru;
+package jugru.two_phase_constructor;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -9,8 +9,11 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-<bean id="quoterImpl" class="jugru.QuoterImpl"
-	  p:message="Hello"/>
+
+	<bean class="jugru.custom_annotation.RundomIntAnnotationBPP"/>
+
+	<bean id="quoterImpl" class="jugru.base_example.QuoterImpl"
+	  	p:message="Hello"/>
 
 </beans>
 

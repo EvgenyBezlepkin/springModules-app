@@ -3,9 +3,10 @@
 1 нестатический блок инициализации
 2 конструктор
 3 методы установки для внедрения зависимостей
-4 метод @PostConstruct
-5 метод afterPropertiesSet(), если бин реализует InitializingBean
-6 метод указанный в init-method
+    postProcessBeforeInitialization(Object bean, String beanName) throws BeansException   // метод BeanPostProcessor
+4 метод @PostConstruct                                              // для аннотаций
+5 метод afterPropertiesSet(), если бин реализует InitializingBean   // устаревший способ
+6 метод указанный в init-method                                     // для xml
 
 
 порядок вызова элементов при уничтожении бина

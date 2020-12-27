@@ -1,0 +1,19 @@
+
+1 BeanDefinitionReader читает из xml декларации бинов
+2 найденные декларации складываются в BeanDefinition (объект по типу Map (id : declaration (class, property etc))
+3 BeanFactory создает объекты из дефиниций и складывает их в контейнер (с этого момента бины настроены)
+
+(по умолчанию бины - сингтоны, по умолчанию создаются тогда, когда поднимается контекст,
+и записываются к него;
+когда контекст закрывается, вызываются дестрой-методы сингтонов
+прототипы в контексте не хранятся, создаются по запросу, дестрой-методы для них после закрытия контекста не вызываются)
+
+4 BeanPostProcessor позволяет настроить бин до того как тот попал в контейнер
+если пост-процессор существует инициализация бина будет выполнена следующим образом
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException   // метод постпроцессора
+    init-method,
+    afterPropertiesSet  // устаревший способ
+    @PostConstruct
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException    // метод постпроцессора
+
+
