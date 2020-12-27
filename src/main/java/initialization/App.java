@@ -1,16 +1,22 @@
 package initialization;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanClassLoaderAware;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 
-public class App implements InitializingBean, DisposableBean {
+public class App implements InitializingBean, DisposableBean , BeanNameAware, ApplicationContextAware, BeanClassLoaderAware {
 
     private String s;
     private int i;
+    private String name;
 
 
     public String getS() {
@@ -29,15 +35,15 @@ public class App implements InitializingBean, DisposableBean {
 
     @PostConstruct
     public void initialize() {
-        System.out.println("PostConstruct");
+        System.out.print("PostConstruct : ");
         if (s == null) {
             System.out.println("value doesn't set");
         }
     }
 
-    @Override
+    @Override   // InitializingBean
     public void afterPropertiesSet() throws Exception {
-        System.out.println("afterPropertiesSet");
+        System.out.println("afterPropertiesSet from InitializingBean");
     }
 
     // init method calling in xml
@@ -51,7 +57,7 @@ public class App implements InitializingBean, DisposableBean {
         System.out.println("PreDestyroy");
     }
 
-    @Override
+    @Override   // DisposableBean
     public void destroy() throws Exception {
         System.out.println("destroy from DisposableBean");
     }
@@ -61,6 +67,21 @@ public class App implements InitializingBean, DisposableBean {
         System.out.println("destroy");
     }
 
+    @Override   // BeanNameAware
+    public void setBeanName(String s) {
+        name = s;
+        System.out.println("bean name : " + s);
+    }
+
+    @Override   // BeanClassLoaderAware
+    public void setBeanClassLoader(ClassLoader classLoader) {
+
+    }
+
+    @Override   // ApplicationContextAware
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+
+    }
 
     @Override
     public String toString() {
@@ -80,6 +101,7 @@ public class App implements InitializingBean, DisposableBean {
 
         ctx.close();
     }
+
 
 
 }
