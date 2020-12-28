@@ -1,27 +1,14 @@
-package jugru.two_phase_constructor;
+package jugru.proxy_example.base;
 
 import jugru.custom_annotation.RundomInt;
+import jugru.proxy_example.profiling.Profiling;
 
-import javax.annotation.PostConstruct;
-
+@Profiling
 public class QuoterImpl implements Quoter {
 
     @RundomInt(min = 2, max = 7)
     private int i;
     private String message;
-
-    // проставит дефолтные значения
-    public QuoterImpl() {
-        System.out.println("Phase 1");
-        System.out.println("i : " + i);
-    }
-
-    // проставит значения и зависимости из общих аннотаций
-    @PostConstruct
-    public void init() {
-        System.out.println("Phase 2");
-        System.out.println("i : " + i);
-    }
 
 
     public int getI() {
@@ -37,7 +24,7 @@ public class QuoterImpl implements Quoter {
         this.message = message;
     }
 
-
+    @Profiling
     @Override
     public void sayQuoter() {
         System.out.println("Message : " + message + " : " + i);

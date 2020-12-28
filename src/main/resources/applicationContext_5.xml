@@ -10,10 +10,15 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-<!--	постпроцессор для обработки пользовательской аннотации-->
+<!--	постпроцессор для обработки общих аннотаций спринг-->
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
+<!--	включает обработку аннотаций, добавляя постпроцессоры для обработки общих аннотаций-->
+	<context:annotation-config/>
+
 	<bean class="jugru.custom_annotation.RundomIntAnnotationBPP"/>
 
-	<bean id="quoterImpl" class="jugru.base_example.QuoterImpl"
+	<bean id="quoterImpl" class="jugru.two_phase_constructor.QuoterImpl"
 	  	p:message="Hello"/>
 
 </beans>

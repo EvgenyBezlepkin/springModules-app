@@ -1,0 +1,9 @@
+
+Пример использования postProcessAfterInitialization (BeanPostProcessor)
+
+В этом примере пишется обработчик пользовательской классовой аннотации @Profile
+В методе postProcessBeforeInitialization фиксируются классы, которые аннотированы @Profile
+В конструкторе ProfilingHandlerBPP создается MBean
+В методе postProcessAfterInitialization генерируется прокси-объект,
+с помощью которого мы оборачиваем каждый метод оригинального объекта необходимой логикой
+
