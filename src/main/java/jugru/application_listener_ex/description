@@ -1,0 +1,24 @@
+
+Суть примера: необходимо чтобы все методы, аннотированные @PostProxy, запускались после того
+как спринг настроит все бины и сгенерирует необходимые прокси
+
+пример трехфазового конструктора
+1 - конструктора джава
+2 - постконструктор
+3 - листенер
+
+одним из ключевых элементов Spring - ApplicationContext, который управляет жизненным циклом бинов.
+В процессе работы он вызывает определенные события
+Обработка этих событий обеспечивается классом ApplicationEvent и интерфейсом ApplicationListener.
+Когда бин иплементирует интерфейс ApplicationListener, каждый раз, когда вызывается событие, бин получает информацию об этом.
+
+ContextStartedEvent
+ContextRefreshedEvent
+ContextStoppedEvent
+ContextClosedEvent
+RequestHandledEvent
+
+Реализация примера
+создаем класс с имплементацией нужного нам листенера
+к примеру public class ContextListenerForPostRefresh implements ApplicationListener<ContextRefreshedEvent>
+и реализуем требуемую логику

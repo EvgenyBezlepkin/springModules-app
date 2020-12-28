@@ -1,2 +1,2 @@
 
-Пример использования postProcessBeforeInitialization
+Пример использования postProcessBeforeInitialization (class BeanPostProcessor)

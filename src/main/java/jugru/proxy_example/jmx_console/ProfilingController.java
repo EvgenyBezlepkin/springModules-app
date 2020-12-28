@@ -5,7 +5,7 @@ import jugru.proxy_example.jmx_console.ProfilingControllerMBean;
 
 public class ProfilingController implements ProfilingControllerMBean {
 
-    private boolean enable;
+    private boolean enable = true;
 
     public boolean isEnable() {
         return enable;

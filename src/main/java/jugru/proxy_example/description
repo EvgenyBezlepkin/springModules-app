@@ -1,5 +1,5 @@
 
-Пример использования postProcessAfterInitialization (BeanPostProcessor)
+Пример использования postProcessAfterInitialization (class BeanPostProcessor)
 
 В этом примере пишется обработчик пользовательской классовой аннотации @Profile
 В методе postProcessBeforeInitialization фиксируются классы, которые аннотированы @Profile
