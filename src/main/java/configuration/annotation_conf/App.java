@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext();
-        acac.scan("cosmina.configuration.annotation_conf");
+        acac.scan("configuration.annotation_conf");
         acac.refresh();
         MessageRenderer mr = acac.getBean("renderer", MessageRenderer.class);
         mr.render();

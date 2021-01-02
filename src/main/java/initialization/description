@@ -1,12 +1,15 @@
 порядок вызова элементов при инициализации бина
 
-1 нестатический блок инициализации
-2 конструктор
-3 методы установки для внедрения зависимостей
-    postProcessBeforeInitialization(Object bean, String beanName) throws BeansException   // метод BeanPostProcessor
-4 метод @PostConstruct                                              // для аннотаций
-5 метод afterPropertiesSet(), если бин реализует InitializingBean   // устаревший способ
-6 метод указанный в init-method                                     // для xml
+1 чтение конфигурации, претенденты на бины записываются в Bean Definition
+2 Нотификация aware-интерфейсов. BeanNameAware, BeanFactoryAware и другие.
+3 beanFactoryPostProcessor может получить доступ к Bean Definition для изменения бинов
+4 инстанцирование объекта (конструктор), установка свойств из конфигурации бина, внедрение зависимостей; с помощью Bean Factory
+5 Пре-инициализация – метод beanPostProcessor - postProcessBeforeInitialization(Object bean, String beanName)
+6 инит-метод spring
+    метод @PostConstruct                                              // для аннотаций
+    метод afterPropertiesSet(), если бин реализует InitializingBean   // устаревший способ
+    метод указанный в init-method                                     // для xml
+7 Пост-инициализация – метод beanPostProcessor - postProcessAfterInitialization(Object bean, String beanName)
 
 
 порядок вызова элементов при уничтожении бина
@@ -14,3 +17,4 @@
 1 метод @PreDestroy
 2 метод destoy(), если бин реализует DisposableBean
 3 метод указанный в destroy-method
+
