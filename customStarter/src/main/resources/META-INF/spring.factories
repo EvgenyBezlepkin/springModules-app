@@ -1,0 +1,5 @@
+
+# здесь можно прописать конфигурацию, бины, для которых необходима автозагрузка
+
+# разрешить автоматическое конфигурирование указанного файла
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=starter.StarterConfiguration

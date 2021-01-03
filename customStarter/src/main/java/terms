@@ -1,0 +1,7 @@
+
+1 @Import принимает конфигурационные классы и селекторы
+
+2 @EnableAutoConfiguration содержит @Import({EnableAutoConfigurationImportSelector.class})
+ImportSelector импортирует стартеры в контекст, он обрабатывает аннотацию @EnableAutoConfiguration из spring.factories, выбирает, какие конфигурации загрузить.
+
+3 @Conditional
