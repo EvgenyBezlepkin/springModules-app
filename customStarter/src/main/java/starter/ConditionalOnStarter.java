@@ -10,7 +10,5 @@ import java.lang.annotation.RetentionPolicy;
 // пользовательская аннотация дожна ссылаться на класс который наследует от Condition
 @Retention(RetentionPolicy.RUNTIME)
 @Conditional(OnStarterConditional.class)
-@ConditionalOnBean
 public @interface ConditionalOnStarter {
-    boolean enable();
 }
