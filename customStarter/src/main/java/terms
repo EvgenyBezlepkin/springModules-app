@@ -4,4 +4,7 @@
 2 @EnableAutoConfiguration содержит @Import({EnableAutoConfigurationImportSelector.class})
 ImportSelector импортирует стартеры в контекст, он обрабатывает аннотацию @EnableAutoConfiguration из spring.factories, выбирает, какие конфигурации загрузить.
 
-3 @Conditional
+3 @Conditional выполняет условную логику для создания бина (логика выполняется как минимум каждый раз для каждой аннотации)
+лучше ставить в конфигурационных классах над бинами (если нужно - следует кешировать ответ)
+
+4

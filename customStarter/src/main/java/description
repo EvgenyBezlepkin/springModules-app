@@ -6,4 +6,20 @@
     3 в resources/META-INF/spring.factories необходимо разрешить автоконфигурацию бинов из конфига
     (spring.factories - файл который в часности позволяет указать spring какие бины должны быть сконфигурированы автогматически)
 
-2
+2 создание @ConditionalOnStarter (настройка условий для запуска стартера)
+
+    1 создается пользовательская аннотация (@ConditionalOnStarter)
+    2 в классе аннотации указывается класс-обработчик (@Conditional(OnStarterConditional.class))
+    3 класс-обработчик наследует от класса Condition и и мплементирует метод matches(ConditionContext context, AnnotatedTypeMetadata metadata)
+
+3 автокомплит
+
+    1 создаем application.yml в проекте, куда подключен стартер (если его нет)
+    2 создаем файл StarterProperties (принимает аннотацию @ConfigurationProperties(prefix = ...)
+    3 аннотация задает общий префикс, а название полей - это дальнейшие расширения (private List<String> destinations;)
+    4 в итоге в файле application.yml становится возможен автокомплит по префиксу
+    (необходимо подключить spring-boot-configuration-processor, который генерирует json для автокомплита, его можно найти в таргетре или в джаре)
+    5 добавить бин пропертис в листенер и написать логику
+    6 добавить @EnableConfigurationProperties(StarterProperties.class) в конфигурацию
+
+4
