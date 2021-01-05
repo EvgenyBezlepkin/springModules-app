@@ -26,7 +26,6 @@ public class App {
         ConfigurableApplicationContext ctx = SpringApplication.run(App.class, args);
 
         //Stream.of(ctx.getBeanDefinitionNames()).sorted().forEach(System.out::println);
-
         //DispatcherServlet ds = ctx.getBean("dispatcherServlet", DispatcherServlet.class);
 
         ctx.close();

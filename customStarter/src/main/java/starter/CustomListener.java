@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
 
+// слушаем событие обновления контекта (т.е. контекст готов)
 public class CustomListener implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired

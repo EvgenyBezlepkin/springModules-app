@@ -8,9 +8,9 @@ import javax.swing.*;
 import java.util.Random;
 
 
+// прописываем логику которая возвращает boolean, от которого зависит вернется бин под этой аннотацией или нет
 public class OnStarterConditional implements Condition {
 
-    // прописываем логику которая возвращает boolean, от которого зависит вернется бин под этой аннотацией или нет
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         return true;
     }

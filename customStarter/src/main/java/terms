@@ -1,7 +1,36 @@
+https://www.youtube.com/watch?v=wQcZK0Tln30
+
 
 Spring Boot предоставляет наборы стартеров (web, jpa), которые обладают возможностью автоконфигурировать бины для контекста
+Автоконфигурация возможна за счет файла spring.factories, который позволяет указать spring какие бины, конфиги, листенеры и т.д. должны быть сконфигурированы автоматически
+и группы аннотаций @Conditional, которые в зависимости от условий загружают бины из BeanDefinition.
 
-1 @EnableAutoConfiguration (в аннотации @SpringBootApplication) содержит @Import({EnableAutoConfigurationImportSelector.class})
+Главный класс помечается тремя аннотациями
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan
+
+Аннотация @EnableAutoConfiguration (в аннотации @SpringBootApplication) содержит @Import({EnableAutoConfigurationImportSelector.class})
 ImportSelector импортирует стартеры в контекст, он обрабатывает аннотацию @EnableAutoConfiguration из spring.factories, выбирает, какие конфигурации загрузить.
+Аннотация @ComponentScan сканирует текущимй пакте и ищет кандидлаты в бины и классы конфигураций.
 
-2 spring.factories - файл который в часности позволяет указать spring какие бины должны быть сконфигурированы автоматически
+
+Этапы инициализации приложения Spring Boot
+
+    - StartingEvent
+1 SpringApplication.run кидает StartingEvent.
+
+    - EnvironmentPreparedEvent
+2 Специальный класс ConfigFileApplicationListener находит EnvironmentPostProcessor'ы и с их помощью настраивает environment.
+    (ConfigFileApplicationListener получает контекст, сортирует и обрабатывает EPP и классы из factories.)
+    (Environment содержит пользовательские и системные свойства, профили.)
+
+    - PreparedEvent
+3 Как только environment настроен, мы начинаем строить контекст.
+
+    - RefreshedEvent
+4 ApplicationContextInitializer отрабатывает, когда контекст уже создан, но еще в нем нет ничего, кроме environment.
+
+5 далее начинается работа Spring Core
+
+C контекстом можно работать при помощи ApplicationListener. Большинство этапов инициализации контекста доступны через листенеры
