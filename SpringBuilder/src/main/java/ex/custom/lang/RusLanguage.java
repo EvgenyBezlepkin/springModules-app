@@ -1,10 +1,12 @@
 package ex.custom.lang;
 
-import ex.infra.annotations.InjectProperty;
+import ex.infra.annotation.InjectProperty;
+
 
 public class RusLanguage implements Language{
 
-    // если имя свойства не задано в аннотации ищем значение по имени поля в файле application.property
+    // инжекция свойства по совпадающему значению application.property
+    // если имя свойства не задано в аннотации ищем значение по имени поля
     @InjectProperty()
     private String langMes;
 

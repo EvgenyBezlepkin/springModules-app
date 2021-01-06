@@ -1,14 +1,22 @@
 package ex.custom;
 
+import com.sun.org.apache.bcel.internal.generic.LADD;
 import ex.custom.lang.Language;
 import ex.custom.lang.RusLanguage;
 import ex.infra.ObjectFactory;
 import ex.custom.provider.DataProvider;
+import ex.infra.annotation.InjectByType;
 
+
+// основной класс пользовательского приложения
+// инжекция имплементации Language (в этом классе происходит инжекция примитива по аннотации
+// инжекция имплементации DataProvider
 public class MessageRenderer {
 
-    private final Language lang = ObjectFactory.getInstance().createObject(RusLanguage.class);
-    private final DataProvider provider = ObjectFactory.getInstance().createObject(DataProvider.class);
+    @InjectByType
+    private Language lang;
+    @InjectByType
+    private DataProvider provider;
 
     public void render() {
         lang.getLang();

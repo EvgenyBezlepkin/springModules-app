@@ -1,4 +1,4 @@
-package ex.infra;
+package ex.infra.config;
 
 import org.reflections.Reflections;
 

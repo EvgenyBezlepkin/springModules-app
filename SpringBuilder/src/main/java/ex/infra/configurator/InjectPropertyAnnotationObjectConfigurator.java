@@ -1,15 +1,15 @@
-package ex.infra;
+package ex.infra.configurator;
 
-import ex.infra.annotations.InjectProperty;
+import ex.infra.annotation.InjectProperty;
 import lombok.SneakyThrows;
-
 import java.io.FileReader;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
+
 public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigurator{
 
-    Properties p;
+    private final Properties p;
 
     @SneakyThrows
     public InjectPropertyAnnotationObjectConfigurator() {

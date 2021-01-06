@@ -1,20 +1,13 @@
 package ex.infra;
 
 
-import de.codecentric.boot.admin.server.web.PathUtils;
 import ex.custom.provider.Console2Provider;
 import ex.custom.provider.DataProvider;
-import ex.infra.annotations.InjectProperty;
+import ex.infra.config.JavaConfig;
+import ex.infra.configurator.ObjectConfigurator;
 import lombok.SneakyThrows;
 
-import java.io.FileReader;
-import java.lang.reflect.Field;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ObjectFactory {
 
@@ -31,9 +24,8 @@ public class ObjectFactory {
     @SneakyThrows
     private ObjectFactory() {
         config = new JavaConfig("ex", map);
-        Iterator<Class<? extends ObjectConfigurator>> iterator = config.getScanner().getSubTypesOf(ObjectConfigurator.class).iterator();
-        if (iterator.hasNext()) {
-            configurators.add(iterator.next().getDeclaredConstructor().newInstance());
+        for (Class<? extends ObjectConfigurator> c : config.getScanner().getSubTypesOf(ObjectConfigurator.class)) {
+            configurators.add(c.getDeclaredConstructor().newInstance());
         }
     }
 
@@ -49,7 +41,7 @@ public class ObjectFactory {
         }
         T t = impl.getDeclaredConstructor().newInstance();
 
-        configurators.iterator().next().configure(t);
+        configurators.forEach(x -> x.configure(t));
 
         return t;
     }
