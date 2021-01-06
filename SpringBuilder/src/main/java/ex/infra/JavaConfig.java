@@ -1,5 +1,6 @@
 package ex.infra;
 
+import lombok.Getter;
 import org.reflections.Reflections;
 
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 public class JavaConfig implements AppConfig{
 
+    @Getter
     private final Reflections scanner;
     private final Map<Class, Class> ifc2impl;
 
