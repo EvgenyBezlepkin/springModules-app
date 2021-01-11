@@ -1,5 +1,6 @@
 package ex.infra.configurator;
 
+import ex.infra.AppContext;
 import ex.infra.ObjectFactory;
 import ex.infra.annotation.InjectByType;
 import lombok.SneakyThrows;
@@ -10,12 +11,12 @@ public class InjectByTypeAnnotationObjectConfigurator implements ObjectConfigura
 
 
     @Override
-    public void configure(Object o) throws Exception {
+    public void configure(Object o, AppContext context) throws Exception {
         for( Field field : o.getClass().getDeclaredFields()) {
             InjectByType annotation = field.getAnnotation(InjectByType.class);
             if (annotation != null) {
                 field.setAccessible(true);
-                Object object = ObjectFactory.getInstance().createObject(field.getType());
+                Object object = context.getObject(field.getType());
                 field.set(o, object);
             }
         }

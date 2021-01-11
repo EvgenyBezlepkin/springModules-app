@@ -1,30 +1,22 @@
 package ex.infra;
 
 
-import ex.custom.provider.Console2Provider;
-import ex.custom.provider.DataProvider;
-import ex.infra.config.JavaConfig;
+import ex.infra.config.AppConfig;
 import ex.infra.configurator.ObjectConfigurator;
 
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class ObjectFactory {
 
-    private JavaConfig config;
-    private static final ObjectFactory instance = new ObjectFactory();
-    private final Map<Class, Class> map;
-    private List<ObjectConfigurator> configurators = new ArrayList<>();
-
-    {
-        map = new HashMap<Class, Class>();
-        map.put(DataProvider.class, Console2Provider.class);
-    }
+    private final AppConfig config;
+    private AppContext context;
+    private final List<ObjectConfigurator> configurators = new ArrayList<>();
 
 
-    private ObjectFactory() {
-        config = new JavaConfig("ex", map);
+    public ObjectFactory(AppContext context) {
+        this.context = context;
+        config = context.getConfig();
         for (Class<? extends ObjectConfigurator> c : config.getScanner().getSubTypesOf(ObjectConfigurator.class)) {
             try {
                 configurators.add(c.getDeclaredConstructor().newInstance());
@@ -34,21 +26,14 @@ public class ObjectFactory {
         }
     }
 
-    public static ObjectFactory getInstance() {
-        return instance;
-    }
 
+    public <T> T createObject(Class<T> impl) throws Exception {
 
-    public <T> T createObject(Class<T> type) throws Exception {
-        Class<? extends T> impl = type;
-        if (type.isInterface()) {
-            impl = config.getImplClass(type);
-        }
         T t = impl.getDeclaredConstructor().newInstance();
 
         configurators.forEach(x -> {
             try {
-                x.configure(t);
+                x.configure(t, context);
             } catch (Exception e) {
                 e.printStackTrace();
             }

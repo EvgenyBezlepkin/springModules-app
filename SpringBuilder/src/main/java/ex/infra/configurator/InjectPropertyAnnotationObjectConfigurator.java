@@ -1,5 +1,6 @@
 package ex.infra.configurator;
 
+import ex.infra.AppContext;
 import ex.infra.annotation.InjectProperty;
 import lombok.SneakyThrows;
 
@@ -23,7 +24,7 @@ public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigu
 
 
     @Override
-    public void configure(Object o) throws IllegalAccessException {
+    public void configure(Object o, AppContext context) throws IllegalAccessException {
         Class<?> impl = o.getClass();
         // не захватывает наследованные поля
         for( Field field : impl.getDeclaredFields()) {
