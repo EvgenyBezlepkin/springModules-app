@@ -5,8 +5,9 @@ import ex.custom.provider.Console2Provider;
 import ex.custom.provider.DataProvider;
 import ex.infra.config.JavaConfig;
 import ex.infra.configurator.ObjectConfigurator;
-import lombok.SneakyThrows;
 
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class ObjectFactory {
@@ -21,11 +22,15 @@ public class ObjectFactory {
         map.put(DataProvider.class, Console2Provider.class);
     }
 
-    @SneakyThrows
+
     private ObjectFactory() {
         config = new JavaConfig("ex", map);
         for (Class<? extends ObjectConfigurator> c : config.getScanner().getSubTypesOf(ObjectConfigurator.class)) {
-            configurators.add(c.getDeclaredConstructor().newInstance());
+            try {
+                configurators.add(c.getDeclaredConstructor().newInstance());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -33,15 +38,21 @@ public class ObjectFactory {
         return instance;
     }
 
-    @SneakyThrows
-    public <T> T createObject(Class<T> type) {
+
+    public <T> T createObject(Class<T> type) throws Exception {
         Class<? extends T> impl = type;
         if (type.isInterface()) {
             impl = config.getImplClass(type);
         }
         T t = impl.getDeclaredConstructor().newInstance();
 
-        configurators.forEach(x -> x.configure(t));
+        configurators.forEach(x -> {
+            try {
+                x.configure(t);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         return t;
     }

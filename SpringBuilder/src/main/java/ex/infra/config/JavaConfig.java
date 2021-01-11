@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class JavaConfig implements AppConfig{
 
-    @Getter
+
     private final Reflections scanner;
     private final Map<Class, Class> ifc2impl;
 
@@ -26,5 +26,10 @@ public class JavaConfig implements AppConfig{
             }
             return subTypesOf.iterator().next();
         });
+    }
+
+    @Override
+    public Reflections getScanner() {
+        return scanner;
     }
 }

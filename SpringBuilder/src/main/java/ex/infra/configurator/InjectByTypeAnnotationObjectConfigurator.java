@@ -9,9 +9,8 @@ import java.lang.reflect.Field;
 public class InjectByTypeAnnotationObjectConfigurator implements ObjectConfigurator{
 
 
-    @SneakyThrows
     @Override
-    public void configure(Object o) {
+    public void configure(Object o) throws Exception {
         for( Field field : o.getClass().getDeclaredFields()) {
             InjectByType annotation = field.getAnnotation(InjectByType.class);
             if (annotation != null) {

@@ -2,7 +2,10 @@ package ex.infra.configurator;
 
 import ex.infra.annotation.InjectProperty;
 import lombok.SneakyThrows;
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
@@ -11,16 +14,16 @@ public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigu
 
     private final Properties p;
 
-    @SneakyThrows
-    public InjectPropertyAnnotationObjectConfigurator() {
+
+    public InjectPropertyAnnotationObjectConfigurator() throws IOException {
         String resource = ClassLoader.getSystemClassLoader().getResource("application.properties").getPath();
         p = new Properties();
         p.load(new FileReader(resource));
     }
 
-    @SneakyThrows
+
     @Override
-    public void configure(Object o) {
+    public void configure(Object o) throws IllegalAccessException {
         Class<?> impl = o.getClass();
         // не захватывает наследованные поля
         for( Field field : impl.getDeclaredFields()) {
