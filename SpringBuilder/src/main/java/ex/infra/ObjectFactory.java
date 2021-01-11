@@ -1,22 +1,24 @@
 package ex.infra;
 
 
+import ex.infra.annotation.PostConstruct;
 import ex.infra.config.AppConfig;
 import ex.infra.configurator.ObjectConfigurator;
 
 
+
+import java.lang.reflect.Method;
 import java.util.*;
 
 public class ObjectFactory {
 
-    private final AppConfig config;
-    private AppContext context;
-    private final List<ObjectConfigurator> configurators = new ArrayList<>();
 
+    private final AppContext context;
+    private final List<ObjectConfigurator> configurators = new ArrayList<>();
 
     public ObjectFactory(AppContext context) {
         this.context = context;
-        config = context.getConfig();
+        AppConfig config = context.getConfig();
         for (Class<? extends ObjectConfigurator> c : config.getScanner().getSubTypesOf(ObjectConfigurator.class)) {
             try {
                 configurators.add(c.getDeclaredConstructor().newInstance());
@@ -25,7 +27,6 @@ public class ObjectFactory {
             }
         }
     }
-
 
     public <T> T createObject(Class<T> impl) throws Exception {
 
@@ -38,6 +39,12 @@ public class ObjectFactory {
                 e.printStackTrace();
             }
         });
+
+        for (Method method : impl.getMethods()) {
+            if (method.isAnnotationPresent(PostConstruct.class)) {
+                method.invoke(t);
+            }
+        }
 
         return t;
     }
