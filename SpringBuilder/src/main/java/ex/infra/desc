@@ -1,9 +1,22 @@
 
 1 классы Config описывают метод public <T> Class<? extends T> getImplClass(Class<T> type)
 который ищет в заданном пакете имплементацию переданного интерфейса
-В этом классе находится карта с кэшированными бинами
+
 
 2 класс Configurator имеет метод public void configure(Object o)
 который ищет аннотации у переданного объекта и инжектирует туда переданные свойства
 
-3 класс ObjectFactory
+3 класс ObjectFactory имеет метод public <T> T createObject(Class<T> impl)
+занимается конфигурированием объектов с помощью конфигураторов
+
+4 класс AppContext занимается кешированием объектов и созданием объектов с помощью фабрики
+
+5 общая логика приложения находитс в классе Aplication
+        - создаем конфигурацию
+        AppConfig config = new JavaConfig(packageToScan, map);
+        - на ее основе создаем контекст
+        AppContext context = new AppContext(config);
+        - на его основе создаем фабрику
+        ObjectFactory objectFactory = new ObjectFactory(context);
+        - устанавливаем фабрике контекст
+        context.setFactory(objectFactory);
