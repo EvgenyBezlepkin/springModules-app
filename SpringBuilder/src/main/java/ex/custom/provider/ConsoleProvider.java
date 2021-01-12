@@ -2,6 +2,7 @@ package ex.custom.provider;
 
 import ex.infra.annotation.PostConstruct;
 
+
 public class ConsoleProvider implements DataProvider{
     @Override
     public void getMessage() {
@@ -10,6 +11,6 @@ public class ConsoleProvider implements DataProvider{
 
     @PostConstruct
     public void init() {
-        System.out.println("init-method");
+        System.out.println("invoke init-method");
     }
 }

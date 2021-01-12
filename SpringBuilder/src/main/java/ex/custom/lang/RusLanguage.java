@@ -1,8 +1,12 @@
 package ex.custom.lang;
 
+import ex.infra.annotation.Deprecation;
 import ex.infra.annotation.InjectProperty;
+import ex.infra.annotation.Singleton;
 
 
+@Singleton
+@Deprecation
 public class RusLanguage implements Language{
 
     // инжекция свойства по совпадающему значению application.property
