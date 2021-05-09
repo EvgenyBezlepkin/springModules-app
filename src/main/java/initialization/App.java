@@ -1,18 +1,20 @@
 package initialization;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanClassLoaderAware;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 
-public class App implements InitializingBean, DisposableBean , BeanNameAware, ApplicationContextAware, BeanClassLoaderAware {
+public class App implements InitializingBean, DisposableBean ,
+                            BeanNameAware, ApplicationContextAware,
+                            BeanClassLoaderAware, ApplicationEventPublisherAware,
+                            BeanFactoryAware{
 
     private String s;
     private int i;
@@ -80,7 +82,7 @@ public class App implements InitializingBean, DisposableBean , BeanNameAware, Ap
 
     @Override   // ApplicationContextAware
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-
+        // через аргумент бин может манипулировать контекстом
     }
 
     @Override
@@ -103,5 +105,13 @@ public class App implements InitializingBean, DisposableBean , BeanNameAware, Ap
     }
 
 
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
 
+    }
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+
+    }
 }
