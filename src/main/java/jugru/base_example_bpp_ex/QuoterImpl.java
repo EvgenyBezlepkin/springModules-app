@@ -1,7 +1,10 @@
-package jugru.base_example;
+package jugru.base_example_bpp_ex;
 
 import jugru.custom_annotation.RundomInt;
+import org.springframework.stereotype.Component;
 
+// бин можно добавить через аннотацию над классом, либо через конфигурационный файл
+//@Component
 public class QuoterImpl implements Quoter {
 
     @RundomInt(min = 2, max = 7)
