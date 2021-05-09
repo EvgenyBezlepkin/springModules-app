@@ -13,7 +13,7 @@
 <!--	постпроцессор для обработки пользовательской аннотации-->
 	<bean class="jugru.custom_annotation.RundomIntAnnotationBPP"/>
 
-	<bean id="quoterImpl" class="jugru.base_example.QuoterImpl"
+	<bean id="quoterImpl" class="jugru.base_example_bpp_ex.QuoterImpl"
 	  	p:message="Hello"/>
 
 </beans>
