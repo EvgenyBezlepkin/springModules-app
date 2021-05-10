@@ -1,7 +1,6 @@
 package annotations.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
@@ -10,12 +9,12 @@ import java.util.List;
 
 @Component
 
-
-public class StandardOutMessageRenderer implements MessageRenderer {
+// Spring guarantees that the defined beans will be initialized before attempting an initialization of the current bean.
+@DependsOn({"helloWorldMessageProvider", "hyPeoplesMessageProvider"})
+public class StandardOutMessageRendererList implements MessageRendererList {
 
     @Autowired
-    @Qualifier("helloWorldMessageProvider")
-    private MessageProvider mp;
+    private List<MessageProvider> mp;
 
     @Override
     public void render() {
@@ -23,14 +22,14 @@ public class StandardOutMessageRenderer implements MessageRenderer {
             throw new RuntimeException("Message provider is disable");
         }
         // лист создается спрингом с учетом аннотаций @Order
-        System.out.println(mp.getMessage());
+        System.out.println(mp.get(1).getMessage());
     }
 
-    public MessageProvider getMp() {
+    public List<MessageProvider> getMp() {
         return mp;
     }
 
-    public void setMp(MessageProvider mp) {
+    public void setMp(List<MessageProvider> mp) {
         this.mp = mp;
     }
 }

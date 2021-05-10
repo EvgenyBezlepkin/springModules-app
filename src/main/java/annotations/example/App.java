@@ -13,7 +13,13 @@ public class App {
         c.refresh();
 
         MessageRenderer mr = c.getBean(MessageRenderer.class);
+        System.out.println("From messageRenderer");
         mr.render();
+
+        MessageRendererList mrl = c.getBean(MessageRendererList.class);
+        System.out.println("From messageRendererList");
+        mrl.render();
+
         c.close();
     }
 }
