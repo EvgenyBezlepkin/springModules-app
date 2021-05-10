@@ -3,11 +3,12 @@ package annotations.example.renderer;
 import annotations.example.provider.MessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 
 @Component
-
+@Profile("active")
 
 public class StandardOutMessageRenderer implements MessageRenderer {
 

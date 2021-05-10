@@ -3,12 +3,14 @@ package annotations.example.renderer;
 import annotations.example.provider.MessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 
 @Component
+@Profile("active")
 
 // Spring guarantees that the defined beans will be initialized before attempting an initialization of the current bean.
 @DependsOn({"helloWorldMessageProvider", "hyPeoplesMessageProvider"})

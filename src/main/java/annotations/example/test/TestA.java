@@ -1,9 +1,9 @@
 package annotations.example.test;
 
 
-public class TestB implements Test{
+public class TestA implements Test{
 
-    private String s = "profile - test";
+    private String s = "profile - active";
 
     public String getS() {
         return s;

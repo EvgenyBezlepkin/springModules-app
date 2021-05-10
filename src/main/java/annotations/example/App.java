@@ -13,8 +13,13 @@ public class App {
 
         AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext();
 
+        // задаем профайлы
+            c.getEnvironment().setActiveProfiles("active");
+            // в этом случае активны два бина из Config2 (чтобы не произошло конфликта TestB помечаен @Primary)
+            c.getEnvironment().setActiveProfiles("active", "test");
         // на конфигурации находится аннотация @ComponentScan
         c.register(Config.class);
+        // обновляем контекст
         c.refresh();
 
         MessageRenderer mr = c.getBean(MessageRenderer.class);
