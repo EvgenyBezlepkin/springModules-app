@@ -1,6 +1,7 @@
 package annotations.example;
 
 import annotations.example.config.Config;
+import annotations.example.lang.Lang;
 import annotations.example.renderer.MessageRenderer;
 import annotations.example.renderer.MessageRendererList;
 import annotations.example.test.Test;
@@ -34,6 +35,10 @@ public class App {
         // для аннотации @Import
         Test t = c.getBean(Test.class);
         System.out.println(t.getS());
+
+        // для локализации
+        Lang l = c.getBean(Lang.class);
+        l.getMessage();
 
         c.close();
     }
