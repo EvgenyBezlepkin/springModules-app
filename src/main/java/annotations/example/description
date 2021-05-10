@@ -10,3 +10,4 @@
 @ComponentScan (@ComponentScan annotation along with @Configuration annotation to specify the packages that we want to be scanned)
 @Bean (ставится над методами создания объектов в конфигурационном классе для ручного управления бинами)
 @Profile (добавляет бины в контекст, которые помечены типом профайла)
+@PropertySource (загружает внешний ресурс по указанному пути)
