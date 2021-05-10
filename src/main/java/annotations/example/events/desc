@@ -1,0 +1,12 @@
+
+0 по дефолту передача событий синхронна,
+для добавления механизму асинхронности необходимо в конфигурации определить бин
+ApplicationEventMulticaster simpleApplicationEventMulticaster()
+
+1 the event should extend ApplicationEvent
+  the publisher should inject an ApplicationEventPublisher object
+  the listener should implement the ApplicationListener interface
+
+2 существует annotation-based event listener (аннотация @EventListener)
+
+3 оба подхода определены в классе CustomSpringEventListener

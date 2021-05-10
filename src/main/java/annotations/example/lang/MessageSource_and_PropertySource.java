@@ -30,6 +30,7 @@ public class MessageSource_and_PropertySource {
 
     public void getMessage() {
         System.out.println("------------------------------");
+            // второй строкой задаются переменные для вставки в текст {0}
         System.out.println(ms.getMessage("message", new Object[]{"Test"}, Locale.ENGLISH));
         System.out.println(ms.getMessage("message", new Object[]{"Test"}, Locale.FRENCH));
         System.out.println("------------------------------");

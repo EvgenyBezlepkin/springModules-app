@@ -1,0 +1,9 @@
+1 Для локализации необходимо в конфигурационном файле определить бин
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource s = new ResourceBundleMessageSource();
+        s.setBasename("messages");
+        }
+в котором задается имя бандла
+
+2 В бине определить @Autowired private MessageSource ms
+и вызывать его метод getMessage()

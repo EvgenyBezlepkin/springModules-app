@@ -1,6 +1,7 @@
 package annotations.example;
 
 import annotations.example.config.Config;
+import annotations.example.events.CustomSpringEventPublisher;
 import annotations.example.lang.MessageSource_and_PropertySource;
 import annotations.example.renderer.MessageRenderer;
 import annotations.example.renderer.MessageRendererList;
@@ -38,6 +39,10 @@ public class App {
         // для локализации
         MessageSource_and_PropertySource l = c.getBean(MessageSource_and_PropertySource.class);
         l.getMessage();
+
+        // для спринг эвент
+        CustomSpringEventPublisher p = c.getBean(CustomSpringEventPublisher.class);
+        p.publishCustomEvent("test message for spring event module");
 
         c.close();
     }

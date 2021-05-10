@@ -8,7 +8,10 @@ import org.springframework.context.annotation.Import;
 
 // местонахождение импортируемой конфигурации
 import jugru.Config2;
+import org.springframework.context.event.ApplicationEventMulticaster;
+import org.springframework.context.event.SimpleApplicationEventMulticaster;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 
 
 @Configuration
@@ -24,6 +27,16 @@ public class Config {
         s.setBasename("messages");
         s.setDefaultEncoding("UTF-8");
         return s;
+    }
+
+    // конфигурационный бин для асинхронной передачи событий
+    @Bean
+    public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
+        SimpleApplicationEventMulticaster eventMulticaster =
+                new SimpleApplicationEventMulticaster();
+
+        eventMulticaster.setTaskExecutor(new SimpleAsyncTaskExecutor());
+        return eventMulticaster;
     }
 
 }
