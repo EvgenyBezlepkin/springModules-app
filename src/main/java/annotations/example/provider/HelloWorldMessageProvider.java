@@ -1,4 +1,4 @@
-package annotations.example;
+package annotations.example.provider;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.DependsOn;

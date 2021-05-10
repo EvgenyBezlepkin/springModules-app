@@ -1,11 +1,9 @@
-package annotations.example;
+package annotations.example.renderer;
 
+import annotations.example.provider.MessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 
 @Component
