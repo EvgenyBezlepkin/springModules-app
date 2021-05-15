@@ -17,8 +17,10 @@ public class Main {
 
         Agent proxy = (Agent) pf.getProxy();
 
-        target.speak();
-        proxy.speak();
+        // вызов без прокси
+        target.speak("target");
+        // вызов прокси
+        proxy.speak("proxy");
 
     }
 }

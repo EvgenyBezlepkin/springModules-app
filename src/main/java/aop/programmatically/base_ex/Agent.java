@@ -1,8 +1,11 @@
 package aop.programmatically.base_ex;
 
+import aop.auxillary.AopExample;
+
 public class Agent {
 
-    public void speak() {
-        System.out.println("from original method");
+    @AopExample(s = "new proxy")
+    public void speak(String s) {
+        System.out.println("it speak : " + s);
     }
 }

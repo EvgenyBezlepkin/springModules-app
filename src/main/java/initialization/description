@@ -1,9 +1,38 @@
-порядок вызова элементов при инициализации бина
+
+Этапы поднятия контекста
+
+XML конфигурация
+1 парсинг - XmlBeanDefinitionReader читает декларации бинов
+2 найденные декларации преобразуются в BeanDefinition и складываются в Map (id : BD), который хранится в классе DefaultListableBeanFactory.
+
+Аннотации
+1 основной класс - AnnotationConfigApplicationContext
+содержит два поля:
+2 ClassPathBeanDefinitionScanner (если указана @ComponentScan ищет классы с аннотацией @Component, парсит их и создает BeanDefinition)
+3 AnnotatedBeanDefinitionReader (создает BeanFactoryPostProcessor (BeanDefinitionRegistryPostProcessor),
+который при помощи класса ConfigurationClassParser парсирует найдженные JavaConfig и создает BeanDefinition)
+
+4 настройка созданных BeanDefinition происходит с помощью BeanFactoryPostProcessor
+5 интерфейс BeanFactory создает объекты из BD и складывает их в контейнер (Map<BeanName, Bean>)
+6 интерфейс BeanPostProcessor позволяет настроить бин до того как тот попал в контейнер (обрабатывает аннотации полей)
+если пост-процессор существует инициализация бина будет выполнена следующим образом
+    Object postProcessBeforeInitialization(Object bean, String beanName)   // метод постпроцессора
+    init-method,
+    afterPropertiesSet  // устаревший способ
+    @PostConstruct
+    Object postProcessAfterInitialization(Object bean, String beanName)    // метод постпроцессора
+
+(по умолчанию бины - сингтоны, создаются, когда поднимается контекст и записываются к него;
+когда контекст закрывается, вызываются дестрой-методы синглтонов
+прототипы в контексте не хранятся, создаются по запросу и инициализация происходит заново каждый раз, дестрой-методы не вызываются)
+
+
+Порядок вызова методов при инициализации бина
 
 1 чтение конфигурации, претенденты на бины записываются в Bean Definition
 2 Нотификация aware-интерфейсов. BeanNameAware, BeanFactoryAware и другие.
 3 beanFactoryPostProcessor может получить доступ к Bean Definition для изменения бинов
-4 инстанцирование объекта (конструктор), установка свойств из конфигурации бина, внедрение зависимостей; с помощью Bean Factory
+4 инстанцирование объекта (конструктор), установка свойств из конфигурации бина, внедрение зависимостей; с помощью BeanFactory
 5 Пре-инициализация – метод beanPostProcessor - postProcessBeforeInitialization(Object bean, String beanName)
 6 инит-метод spring
     метод @PostConstruct                                              // для аннотаций
@@ -12,7 +41,7 @@
 7 Пост-инициализация – метод beanPostProcessor - postProcessAfterInitialization(Object bean, String beanName)
 
 
-порядок вызова элементов при уничтожении бина
+Порядок вызова методов при уничтожении бина
 
 1 метод @PreDestroy
 2 метод destoy(), если бин реализует DisposableBean
