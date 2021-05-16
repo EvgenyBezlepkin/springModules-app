@@ -1,4 +1,4 @@
-package aop.programmatically.base_ex;
+package aop.programmatically.advice_ex;
 
 import aop.auxillary.AopExample;
 

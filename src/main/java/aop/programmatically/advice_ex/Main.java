@@ -1,4 +1,4 @@
-package aop.programmatically.base_ex;
+package aop.programmatically.advice_ex;
 
 import org.springframework.aop.framework.ProxyFactory;
 
@@ -9,15 +9,15 @@ public class Main {
         // 1 Создаем экземпляр целевого класса (target)
         Agent target = new Agent();
 
-        // 2 Factory for AOP proxies for programmatic use, rather than via a bean factory.
-        // This class provides a simple way of obtaining and configuring AOP proxies in code.
+        // 2 Класс ProxyFactory принимает цель, совет, советников и тд. для создания аспекта
         ProxyFactory pf = new ProxyFactory();
         pf.addAdvice(new AgentInterceptor());
         pf.setTarget(target);
 
+        // 3 создаем прокси
         Agent proxy = (Agent) pf.getProxy();
 
-        // вызов без прокси
+        // вызов целевого класса
         target.speak("target");
         // вызов прокси
         proxy.speak("proxy");

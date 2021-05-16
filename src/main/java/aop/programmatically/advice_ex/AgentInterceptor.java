@@ -1,4 +1,4 @@
-package aop.programmatically.base_ex;
+package aop.programmatically.advice_ex;
 
 import aop.auxillary.AopExample;
 import org.aopalliance.intercept.MethodInterceptor;
@@ -6,8 +6,6 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.MethodBeforeAdvice;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
-import java.util.Arrays;
 
 // предшествующий совет
 // окружающий совет
