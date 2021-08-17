@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "First_t")
-public class First{
+public class Data {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +13,7 @@ public class First{
     @Column
     String value;
 
-    public First(String value) {
+    public Data(String value) {
         this.value = value;
     }
 

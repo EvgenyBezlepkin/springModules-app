@@ -6,3 +6,6 @@
     afterPropertiesSet  // устаревший способ
     @PostConstruct
     Object postProcessAfterInitialization(Object bean, String beanName)    // метод постпроцессора
+
+postProcessBeforeInitialization (необходим для настройки объекта, описания логики)
+postProcessAfterInitialization (необходим для изменени поведения (настройки аспектов, транзакций))
