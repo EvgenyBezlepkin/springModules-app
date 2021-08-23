@@ -16,6 +16,14 @@ public class FirstService {
         firstRepo.save(new Data("a"));
     }
 
+    // если мы вызываем в пределах одного класса из нетранзакционного метода транзакционный,
+    // то транзакция открыта не будет потому что
+    // методы овнутри дного клааса не используют проксирование при вызове один другого
+    // а транзакции спринга строятся как прокси обертки над целевым классом
+    public void inOneClassFromNonTrMethodInvokesTrMethod() {
+        insertTrWithEx();
+    }
+
     @Transactional
     public void insertTrWithEx() {
         firstRepo.save(new Data("a"));

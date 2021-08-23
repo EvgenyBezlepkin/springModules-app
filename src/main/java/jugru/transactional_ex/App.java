@@ -28,7 +28,10 @@ public class App {
 
             //invokeTrMethodWhichInvokeTrRequiresNewMethod(cac);
 
-            invokeTrMethodWhichInvokeTrRequiredMethod(cac);
+            //invokeTrMethodWhichInvokeTrRequiredMethod(cac);
+
+            // NB!
+            //inOneClassFromNonTrMethodInvokesTrMethod(cac);
         }
 
     }
@@ -67,4 +70,10 @@ public class App {
     public static void invokeTrMethodWhichInvokeTrRequiredMethod(ConfigurableApplicationContext cac) {
         cac.getBean("secondService", SecondService.class).invokeInsertWithRequired();
     }
+
+    public static void inOneClassFromNonTrMethodInvokesTrMethod(ConfigurableApplicationContext cac) {
+        FirstService firstService = cac.getBean("firstService", FirstService.class);
+        firstService.inOneClassFromNonTrMethodInvokesTrMethod();
+    }
+
 }
